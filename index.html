@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *
+        {
+            padding: 0%;
+            margin: 0%;
+        }
+        #main
+        {
+            width: 80vw;
+            height: 80vh;
+            margin: 3vh auto;
+            border: 1px solid black;
+
+            display: grid;
+            grid-template: "a b b b"
+                            "a b b b";
+        }
+        #head
+        {
+            grid-area: a;
+            padding-left: 1%;
+            padding-top: 1%;
+            
+        }
+        #stem
+        {
+            grid-area: b;
+            border-left: 1px solid black;
+
+            display: flex;
+            flex-flow: row wrap;
+        }
+        #stem > div
+        {
+            width: 33%;
+            height: 45%;
+            border: 1px solid black;
+        }
+        p
+        {
+            border: 1px solid black;
+            padding: 1%;
+        }
+        img
+        {
+            width: 30%;
+            height: 10%;
+        }
+        button
+        {
+            margin-top: 4px;
+            width: 45%;
+            text-align: center;
+        }
+        button:hover
+        {
+            margin-top: 2px;
+            width: 48%;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div id="main">
+
+        <div id="head">
+
+            <label for="name">NAME :</label>
+            <input type="text" placeholder="name" id="name" name="name">
+            <br>
+            <label for="Age">Age :</label>
+            <input type="number" placeholder="Age" id="age" name="Age">
+            <br>
+            <label for="city">city :</label>
+            <input type="text" placeholder="city" id="city" name="city">
+            <br>
+            <label for="phone">Contact Number :</label>
+            <input type="text" placeholder="phoneNumber" maxlength="10" id="phone" name="phone">
+            <br>
+            <label for="image1">imae</label>
+            
+            <input type="text" id="image1">
+            <br>
+            <button id="submit">Submit</button>
+
+        </div>
+
+        <div id="stem">
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+    var btn=document.getElementById("submit");
+    btn.addEventListener("click",test);
+    var count=0;
+
+    function real(n,a,c,p)
+    {
+        this.name=n;
+        this.age=a;
+        this.city=c;
+        this.phone=p;
+    }
+
+    function test()
+    {
+        
+
+        var x=document.getElementById("stem");
+        var y=document.createElement("div");
+
+       
+        
+        var pName=document.createElement("p");
+        var name1=document.getElementById("name").value;
+        pName.innerHTML=name1;
+        y.appendChild(pName);
+
+        var pAge=document.createElement("p");
+        var age1=document.getElementById("age").value;
+        pAge.innerHTML=age1;
+        y.appendChild(pAge);
+
+        var pCity=document.createElement("p");
+        var city1=document.getElementById("city").value;
+        pCity.innerHTML=city1;
+        y.appendChild(pCity);
+
+        var pNum=document.createElement("p");
+        var num1=document.getElementById("phone").value;
+        pNum.innerHTML=num1;
+        y.appendChild(pNum);
+
+        var newDiv=document.createElement("div");
+        var imgg=document.createElement("img");
+        var imag1=document.getElementById("image1").value;
+        imgg.src=imag1;
+        newDiv.appendChild(imgg);
+        y.appendChild(newDiv);
+
+        var btn1=document.createElement("button");
+        btn1.innerHTML="UPDATE";
+        btn1.addEventListener("click", update);
+        y.appendChild(btn1);
+
+        function update()
+        {
+            
+            var new_name = prompt( "Enter new name");
+            pName.innerHTML=new_name;
+
+        }
+
+
+
+        var btn2=document.createElement("button");
+        btn2.innerHTML="REMOVE";
+        btn2.addEventListener("click", remove);
+         y.appendChild(btn2);
+
+         function remove()
+         {
+             y.remove();
+         }
+
+         if(count<6)
+         {
+            x.appendChild(y);
+         }
+
+        count++;
+ 
+        var newDate=new real(name1,age1,city1,num1);  //stored as object
+        console.log(newDate);
+    }
+
+
+
+
+</script>
